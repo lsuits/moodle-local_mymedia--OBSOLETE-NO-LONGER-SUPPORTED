@@ -40,7 +40,7 @@ if ($enabled) {
 }
 
 $mymedia = get_string('heading_mymedia', 'local_mymedia');
-$PAGE->set_context(get_system_context());
+$PAGE->set_context(context_system::instance());
 $header  = format_string($SITE->shortname).": $mymedia";
 
 $PAGE->set_url('/local/mymedia/mymedia.php');
@@ -76,7 +76,7 @@ $url = new moodle_url("{$host}/p/{$partner_id}/sp/{$partner_id}/ksr/uiconfId/{$u
 $PAGE->requires->js($url, true);
 $PAGE->requires->js('/local/kaltura/js/screenrecorder.js', true);
 
-$courseid = get_courseid_from_context($PAGE->context);
+$courseid = $COURSE->id;
 
 if (local_kaltura_has_mobile_flavor_enabled() && local_kaltura_get_enable_html5()) {
     $uiconf_id = local_kaltura_get_player_uiconf('player_resource');
